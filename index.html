@@ -53,5 +53,97 @@
       })
       .catch(err => console.error('خطأ في تحميل البيانات:', err));
   </script>
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const appsContainer = document.getElementById('apps-grid');
+  const searchInput = document.getElementById('search');
+  const categorySelect = document.getElementById('category');
+
+  let allApps = [];
+
+  // جلب البيانات
+  fetch('apps.json')
+    .then(res => {
+      if (!res.ok) throw new Error('مشكلة في تحميل apps.json');
+      return res.json();
+    })
+    .then(apps => {
+      allApps = apps;
+      renderApps(apps);
+
+      if (searchInput) searchInput.addEventListener('input', filterApps);
+      if (categorySelect) categorySelect.addEventListener('change', filterApps);
+    })
+    .catch(err => {
+      console.error('خطأ:', err);
+      if (appsContainer) {
+        appsContainer.innerHTML = '<p style="color:red; text-align:center;">خطأ في تحميل البيانات</p>';
+      }
+    });
+
+  function renderApps(appsList) {
+    if (!appsContainer) return;
+    appsContainer.innerHTML = '';
+
+    if (appsList.length === 0) {
+      appsContainer.innerHTML = '<p style="text-align:center; color:#777;">لا توجد نتائج مطابقة</p>';
+      return;
+    }
+
+    appsList.forEach(app => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img class="icon" src="${app.icon || 'https://via.placeholder.com/80?text=' + app.title}" alt="${app.title}">
+        <h3>${app.title}</h3>
+        <div class="meta">
+          <span>${app.category === 'games' ? '🎮 ألعاب' : '🛠️ تطبيقات'}</span>
+          <span>الإصدار: ${app.version || 'غير محدد'}</span>
+          <span>${app.size || 'غير محدد'}</span>
+        </div>
+        <a href="detail.html?id=${app.id}" class="download-btn">عرض التفاصيل</a>
+      `;
+      appsContainer.appendChild(card);
+    });
+  }
+
+  function filterApps() {
+    const term = searchInput?.value.toLowerCase().trim() || '';
+    const cat = categorySelect?.value || 'all';
+
+    let filtered = allApps;
+
+    if (term) {
+      filtered = filtered.filter(app =>
+        (app.title || '').toLowerCase().includes(term) ||
+        (app.description || '').toLowerCase().includes(term)
+      );
+    }
+
+    if (cat !== 'all') {
+      filtered = filtered.filter(app => app.category === cat);
+    }
+
+    renderApps(filtered);
+  }
+
+  // Dark Mode (بسيط جداً)
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+    });
+
+    // تحميل الثيم المحفوظ أو حسب النظام
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      if (saved === 'dark') document.documentElement.classList.add('dark');
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark');
+    }
+  }
+});
+</script>
 </body>
 </html>
