@@ -1,0 +1,36 @@
+<!-- detail.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>تفاصيل التطبيق</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<header>
+  <h1 id="title">جاري التحميل...</h1>
+  <a href="index.html">← العودة للرئيسية</a>
+</header>
+
+<div class="detail-container" id="app-detail">
+  <img id="icon" src="" alt="أيقونة" style="width:120px; border-radius:20px;">
+  <p id="short-desc"></p>
+  <p id="description"></p>
+  
+  <div style="margin:2rem 0;">
+    <strong>الإصدار:</strong> <span id="version"></span><br>
+    <strong>الحجم:</strong> <span id="size"></span><br>
+    <strong>التقييم:</strong> <span id="rating">★</span><br>
+    <strong>التحميلات:</strong> <span id="downloads"></span>
+  </div>
+
+  <img id="screenshot" src="" alt="لقطة شاشة" style="border-radius:12px; max-width:100%;">
+
+  <a id="download-link" href="#" class="download-btn" download>تحميل الآن</a>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
