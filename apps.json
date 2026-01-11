@@ -1,22 +1,31 @@
 [
   {
     "id": 1,
-    "title": "لعبة سباق سيارات",
-    "description": "لعبة أكشن ممتعة بدون إنترنت",
-    "version": "1.2.3",
-    "size": "45 MB",
-    "category": "ألعاب",
-    "file": "apps/race-game.apk",
-    "image": "https://via.placeholder.com/300x200?text=Game1"
+    "title": "لعبة سباق السيارات 3D",
+    "description": "لعبة سباق ممتعة بجرافيكس عالية الجودة، تدعم التحكم باللمس والجيروسكوب.",
+    "short_desc": "سباق سيارات بدون نت",
+    "version": "2.1.4",
+    "size": "148 MB",
+    "category": "games",
+    "icon": "https://via.placeholder.com/120?text=Game",
+    "screenshot": "https://via.placeholder.com/600x400?text=Screenshot+Game",
+    "file": "uploads/race-game-v2.apk",
+    "downloads": 12450,
+    "rating": 4.7
   },
   {
     "id": 2,
-    "title": "تطبيق تعديل الصور",
-    "description": "أفضل تطبيق مجاني لتعديل الصور",
-    "version": "4.1.0",
-    "size": "28 MB",
-    "category": "تطبيقات",
-    "file": "apps/photo-editor.apk",
-    "image": "https://via.placeholder.com/300x200?text=App1"
+    "title": "محرر صور Pro",
+    "description": "أفضل تطبيق لتعديل الصور مع فلاتر احترافية وأدوات AI.",
+    "short_desc": "تعديل صور مجاني + AI",
+    "version": "5.3.2",
+    "size": "62 MB",
+    "category": "tools",
+    "icon": "https://via.placeholder.com/120?text=Photo",
+    "screenshot": "https://via.placeholder.com/600x400?text=Screenshot+Editor",
+    "file": "uploads/photo-pro.apk",
+    "downloads": 8750,
+    "rating": 4.5
   }
+  // أضف المزيد هنا...
 ]
